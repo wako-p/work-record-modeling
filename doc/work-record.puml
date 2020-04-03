@@ -1,0 +1,33 @@
+
+@startuml ドメインモデル
+
+hide method
+hide circle
+
+package 勤務時間集約 {
+class 勤務時間
+}
+
+note as 勤務時間コメント
+勤務時間は終業時間-始業時間で求める
+また、遠方からの出勤を加味した調整時間(※遠隔地調整時間)を加算することができる
+end note
+
+勤務時間 .ri. 勤務時間コメント
+
+@enduml
+
+@startuml クラス図
+
+package domain.workinghours {
+class WorkingHours
+class OpeningTime
+class ClosingTime
+class RemoteAdjustmentHours
+}
+
+WorkingHours ..> OpeningTime
+WorkingHours ..> ClosingTime
+WorkingHours ..> RemoteAdjustmentHours
+
+@enduml
